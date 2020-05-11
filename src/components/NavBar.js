@@ -14,23 +14,23 @@ const NavBar = () => {
   return (
     <>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/">
+        <Navbar.Brand as={Link} to="/">
           <img src={logo} width="60px" alt="Just PDF logo" />
         </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="/">
+          <Nav.Link as={Link} to="/">
             <FontAwesomeIcon icon={faHome} />
             Home
           </Nav.Link>
-          <Nav.Link href="/books">
+          <Nav.Link as={Link} to="/books">
             <FontAwesomeIcon icon={faBook} />
             Books
           </Nav.Link>
-          <Nav.Link href="/about">
+          <Nav.Link as={Link} to="/about">
             <FontAwesomeIcon icon={faInfoCircle} />
             About
           </Nav.Link>
-          <Nav.Link href="/contact">
+          <Nav.Link as={Link} to="/contact">
             <FontAwesomeIcon icon={faEnvelope} />
             Contact
           </Nav.Link>
