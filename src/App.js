@@ -6,11 +6,12 @@ import Home from "./Home";
 import Books from "./Books";
 import About from "./About";
 import Contact from "./Contact";
+import { Container } from "react-bootstrap";
 
 const App = () => {
   return (
-    <Router>
-      <div className="App">
+    <Container>
+      <Router>
         <NavBar />
         <Switch>
           <Route path="/" exact component={Home} />
@@ -18,8 +19,8 @@ const App = () => {
           <Route path="/about" exact component={About} />
           <Route path="/contact" exact component={Contact} />
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </Container>
   );
 };
 

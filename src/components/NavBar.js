@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../just_pdf.png";
 
 const NavBar = () => {
   return (
     <nav>
       <Link to="/">
-        <h3>Logo</h3>
+        <img src={logo} width="15%" />
       </Link>
       <ul className="nav-links">
         <Link to="/">
