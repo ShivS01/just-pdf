@@ -1,5 +1,4 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./Home";
@@ -10,10 +9,19 @@ import { Container } from "react-bootstrap";
 import "./index";
 
 const App = () => {
+  const [search, setSearch] = useState("");
+
+  const changeSearch = (event) => setSearch(event.target.value);
+
+  const findBook = (e) => {
+    e.preventDefault();
+    console.log(`Book to find is : ${search}`);
+  };
+
   return (
     <Container>
       <Router>
-        <NavBar />
+        <NavBar updateSearch={changeSearch} handleSearch={findBook} />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/books" exact component={Books} />

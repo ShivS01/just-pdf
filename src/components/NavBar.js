@@ -10,12 +10,12 @@ import {
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 
-const NavBar = () => {
+const NavBar = ({ updateSearch, handleSearch }) => {
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand as={Link} to="/">
-          <img src={logo} width="60px" alt="Just PDF logo" />
+          <img src={logo} width="80" alt="Just PDF logo" />
         </Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link as={Link} to="/">
@@ -35,9 +35,16 @@ const NavBar = () => {
             Contact
           </Nav.Link>
         </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info">Search</Button>
+        <Form inline onSubmit={handleSearch}>
+          <FormControl
+            onChange={updateSearch}
+            type="text"
+            placeholder="Search"
+            className="mr-sm-2"
+          />
+          <Button type="submit" variant="outline-info">
+            Search
+          </Button>
         </Form>
       </Navbar>
     </>
