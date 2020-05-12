@@ -5,8 +5,13 @@ import Home from "./Home";
 import Books from "./Books";
 import About from "./About";
 import Contact from "./Contact";
-import { Container } from "react-bootstrap";
 import "./index";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import TypoGraphy from "@material-ui/core/Typography";
+import logo from "./just_pdf.png";
+
+import SearchAppBar from "./components/NavBar";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -19,9 +24,10 @@ const App = () => {
   };
 
   return (
-    <Container>
+    <>
+      <SearchAppBar />
       <Router>
-        <NavBar updateSearch={changeSearch} handleSearch={findBook} />
+        {/* <NavBar updateSearch={changeSearch} handleSearch={findBook} /> */}
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/books" exact component={Books} />
@@ -29,7 +35,7 @@ const App = () => {
           <Route path="/contact" exact component={Contact} />
         </Switch>
       </Router>
-    </Container>
+    </>
   );
 };
 
