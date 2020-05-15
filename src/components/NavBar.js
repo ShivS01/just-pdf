@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import {
   AppBar,
   Toolbar,
   IconButton,
   InputBase,
   Grid,
+  ButtonBase,
+  Button,
+  Hidden,
 } from "@material-ui/core";
 import TypoGraphy from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
@@ -13,6 +17,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import { Home, Book, AccountBox, Info } from "@material-ui/icons";
 import logo from "../just_pdf.png";
+import withWidth from "@material-ui/core/withWidth";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     display: "none",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("xs")]: {
       display: "block",
     },
   },
@@ -41,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     },
     marginLeft: 0,
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("xs")]: {
       marginLeft: theme.spacing(1),
       width: "auto",
     },
@@ -64,47 +69,98 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("xs")]: {
       width: "12ch",
       "&:focus": {
         width: "20ch",
       },
     },
   },
+  buttonexpand: {
+    height: "100%",
+  },
 }));
 
-const NavBar = () => {
+const NavBar = (props) => {
   const classes = useStyles();
+  const { width } = props;
   return (
     <>
       <AppBar color="primary" position="static">
         <Toolbar>
           <Grid
             container
-            spacing={2}
+            spacing={1}
             xs={9}
-            direction="coloumn"
+            direction="row"
             justify="flex-start"
             alignItems="center"
           >
+            <Hidden mdUp>
+              <Grid item>
+                <IconButton
+                  edge="start"
+                  className={classes.menuButton}
+                  color="inherit"
+                  aria-label="open drawer"
+                >
+                  <MenuIcon />
+                </IconButton>
+              </Grid>
+            </Hidden>
             <Grid item>
-              <IconButton
-                // edge="start"
-                className={classes.menuButton}
-                color="inherit"
-                aria-label="open drawer"
-              >
-                <MenuIcon />
-              </IconButton>
+              <ButtonBase>
+                <Link to="/">
+                  <img src={logo} alt="logo" className={classes.logo} />
+                </Link>
+              </ButtonBase>
             </Grid>
-            <Grid item>
-              <Link to="/">
-                <img src={logo} alt="logo" className={classes.logo} />
-              </Link>
-            </Grid>
-            <Grid item>home</Grid>
-            <Grid item>home</Grid>
-            <Grid item>home</Grid>
+            <Hidden smDown>
+              <Grid item>
+                <Button
+                  size="large"
+                  variant="outlined"
+                  component={Link}
+                  to="/"
+                  startIcon={<Home />}
+                >
+                  Home
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  size="large"
+                  variant="outlined"
+                  component={Link}
+                  to="/books"
+                  startIcon={<Book />}
+                >
+                  Books
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  size="large"
+                  variant="outlined"
+                  component={Link}
+                  to="/about"
+                  startIcon={<Info />}
+                >
+                  About
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  size="large"
+                  variant="outlined"
+                  component={Link}
+                  to="/contact"
+                  startIcon={<AccountBox />}
+                >
+                  Contact
+                </Button>
+              </Grid>
+            </Hidden>
           </Grid>
           <Grid
             container
@@ -132,5 +188,7 @@ const NavBar = () => {
     </>
   );
 };
-
-export default NavBar;
+NavBar.propTypes = {
+  width: PropTypes.oneOf(["lg", "md", "sm", "xl", "xs"]).isRequired,
+};
+export default withWidth()(NavBar);
