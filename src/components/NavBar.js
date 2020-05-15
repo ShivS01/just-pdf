@@ -5,16 +5,13 @@ import {
   Toolbar,
   IconButton,
   InputBase,
-  List,
-  ListItem,
-  ListItemText,
+  Grid,
 } from "@material-ui/core";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import TypoGraphy from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import { Home, Book, AccountBox } from "@material-ui/icons";
+import { Home, Book, AccountBox, Info } from "@material-ui/icons";
 import logo from "../just_pdf.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     maxWidth: 80,
+    maxHeight: 80,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -80,58 +78,55 @@ const NavBar = () => {
   return (
     <>
       <AppBar color="primary" position="static">
-        <Toolbar styles={{ display: "flex", justifyContent: "space-between" }}>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
+        <Toolbar>
+          <Grid
+            container
+            spacing={2}
+            xs={9}
+            direction="coloumn"
+            justify="flex-start"
+            alignItems="center"
           >
-            <MenuIcon />
-          </IconButton>
-          <Link to="/">
-            <img src={logo} alt="logo" className={classes.logo} />
-          </Link>
-          <List component="nav">
-            <ListItem component="div" component={Link} to="/">
+            <Grid item>
+              <IconButton
+                // edge="start"
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="open drawer"
+              >
+                <MenuIcon />
+              </IconButton>
+            </Grid>
+            <Grid item>
               <Link to="/">
-                <ListItemText inset>
-                  <TypoGraphy color="inherit" variant="title">
-                    <Home /> Home
-                  </TypoGraphy>
-                </ListItemText>
+                <img src={logo} alt="logo" className={classes.logo} />
               </Link>
-
-              <Link to="/books">
-                <ListItemText inset>
-                  <TypoGraphy color="inherit" variant="title">
-                    <Book /> Books
-                  </TypoGraphy>
-                </ListItemText>
-              </Link>
-
-              <Link to="/contact">
-                <ListItemText inset>
-                  <TypoGraphy color="inherit" variant="title">
-                    <AccountBox /> Contact
-                  </TypoGraphy>
-                </ListItemText>
-              </Link>
-            </ListItem>
-          </List>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+            </Grid>
+            <Grid item>home</Grid>
+            <Grid item>home</Grid>
+            <Grid item>home</Grid>
+          </Grid>
+          <Grid
+            container
+            xs={3}
+            direction="coloumn"
+            justify="flex-end"
+            alignItems="center"
+          >
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+              />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div>
+          </Grid>
         </Toolbar>
       </AppBar>
     </>
