@@ -1,16 +1,28 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
+import { Link } from "react-router-dom";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  InputBase,
+  List,
+  ListItem,
+  ListItemText,
+} from "@material-ui/core";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import TypoGraphy from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
+import { Home, Book, AccountBox } from "@material-ui/icons";
+import logo from "../just_pdf.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  logo: {
+    maxWidth: 80,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -63,13 +75,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar() {
+const NavBar = () => {
   const classes = useStyles();
-
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
+    <>
+      <AppBar color="primary" position="static">
+        <Toolbar styles={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             edge="start"
             className={classes.menuButton}
@@ -78,9 +89,36 @@ export default function SearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            JUST PDF
-          </Typography>
+          <Link to="/">
+            <img src={logo} alt="logo" className={classes.logo} />
+          </Link>
+          <List component="nav">
+            <ListItem component="div" component={Link} to="/">
+              <Link to="/">
+                <ListItemText inset>
+                  <TypoGraphy color="inherit" variant="title">
+                    <Home /> Home
+                  </TypoGraphy>
+                </ListItemText>
+              </Link>
+
+              <Link to="/books">
+                <ListItemText inset>
+                  <TypoGraphy color="inherit" variant="title">
+                    <Book /> Books
+                  </TypoGraphy>
+                </ListItemText>
+              </Link>
+
+              <Link to="/contact">
+                <ListItemText inset>
+                  <TypoGraphy color="inherit" variant="title">
+                    <AccountBox /> Contact
+                  </TypoGraphy>
+                </ListItemText>
+              </Link>
+            </ListItem>
+          </List>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -96,6 +134,8 @@ export default function SearchAppBar() {
           </div>
         </Toolbar>
       </AppBar>
-    </div>
+    </>
   );
-}
+};
+
+export default NavBar;

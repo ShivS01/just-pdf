@@ -6,12 +6,7 @@ import Books from "./Books";
 import About from "./About";
 import Contact from "./Contact";
 import "./index";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import TypoGraphy from "@material-ui/core/Typography";
-import logo from "./just_pdf.png";
-
-import SearchAppBar from "./components/NavBar";
+import { Container } from "@material-ui/core";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -24,9 +19,9 @@ const App = () => {
   };
 
   return (
-    <>
-      <SearchAppBar />
+    <Container>
       <Router>
+        <NavBar />
         {/* <NavBar updateSearch={changeSearch} handleSearch={findBook} /> */}
         <Switch>
           <Route path="/" exact component={Home} />
@@ -35,7 +30,7 @@ const App = () => {
           <Route path="/contact" exact component={Contact} />
         </Switch>
       </Router>
-    </>
+    </Container>
   );
 };
 
