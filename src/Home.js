@@ -27,42 +27,47 @@ const Home = () => {
 
   return (
     <>
-      <Container className={classes.margin}>
-        <Grid container spacing={2} direction="row">
-          <Grid
-            container
-            item
-            xs
-            spacing={1}
-            direction="column"
-            justify="flex-start"
-          >
-            <Grid item xs>
-              <Typography variant="h3" className={classes.text}>
-                Just Pdf for all your academic needs
-              </Typography>
-            </Grid>
-            <Grid item xs>
-              <Typography variant="subtitle1" className={classes.text}>
-                Find all your academic books in one place without any hassle
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Button
-                variant="contained"
-                color="secondary"
-                component={Link}
-                to="/books"
-              >
-                Browse
-              </Button>
-            </Grid>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={classes.margin}
+        xs={12}
+      >
+        <Grid
+          container
+          item
+          xs={5}
+          // spacing={1}
+          direction="column"
+          justify="center"
+        >
+          <Grid item xs>
+            <Typography variant="h3" className={classes.text}>
+              Just Pdf for all your academic needs
+            </Typography>
           </Grid>
-          <Grid container item xs item alignItems="center" direction="column">
-            <img src={home} width="600" />
+          <Grid item xs>
+            <Typography variant="subtitle1" className={classes.text}>
+              Find all your academic books in one place without any hassle
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="secondary"
+              component={Link}
+              to="/books"
+            >
+              Browse
+            </Button>
           </Grid>
         </Grid>
-      </Container>
+        <Grid container item xs={5} item alignItems="center" direction="column">
+          <img src={home} width="100%" />
+        </Grid>
+      </Grid>
     </>
   );
 };

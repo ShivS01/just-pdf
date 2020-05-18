@@ -6,9 +6,23 @@ import Books from "./Books";
 import About from "./About";
 import Contact from "./Contact";
 import "./index";
-import { Container, Hidden } from "@material-ui/core";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+
+const useStyles = makeStyles((theme) => ({
+  heart: {
+    color: "red",
+  },
+  footer: {
+    display: "flex",
+    justifyContent: "center",
+    margin: theme.spacing(2),
+  },
+}));
 
 const App = () => {
+  const classes = useStyles();
   const [search, setSearch] = useState("");
 
   const changeSearch = (event) => setSearch(event.target.value);
@@ -29,6 +43,12 @@ const App = () => {
           <Route path="/about" exact component={About} />
           <Route path="/contact" exact component={Contact} />
         </Switch>
+        <footer className={classes.footer}>
+          <Typography variant="overline">
+            Website made with <FavoriteIcon className={classes.heart} /> for
+            learners
+          </Typography>
+        </footer>
       </Router>
     </>
   );
