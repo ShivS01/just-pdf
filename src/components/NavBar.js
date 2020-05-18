@@ -125,16 +125,16 @@ const NavBar = (props) => {
   const drawer = (
     <div>
       <List>
-        <ListItem button>
+        <ListItem button component={Link} to="/">
           <ListItemText primary="Home" />
         </ListItem>
-        <ListItem button>
+        <ListItem button component={Link} to="/books">
           <ListItemText primary="Books" />
         </ListItem>
-        <ListItem button>
+        <ListItem button component={Link} to="/about">
           <ListItemText primary="About" />
         </ListItem>
-        <ListItem button>
+        <ListItem button component={Link} to="/contact">
           <ListItemText primary="Contact" />
         </ListItem>
       </List>
@@ -251,6 +251,7 @@ const NavBar = (props) => {
             anchor="left"
             open={open}
             onClose={toggleDrawer}
+            onClick={toggleDrawer}
             classes={{
               paper: classes.drawerPaper,
             }}
