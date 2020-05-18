@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import {
   AppBar,
   Toolbar,
@@ -10,11 +10,15 @@ import {
   ButtonBase,
   Button,
   Hidden,
+  Drawer,
+  ListItemText,
+  ListItem,
+  List,
 } from "@material-ui/core";
-import TypoGraphy from "@material-ui/core/Typography";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { fade, makeStyles, useTheme } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
+import CloseIcon from "@material-ui/icons/Close";
 import { Home, Book, AccountBox, Info } from "@material-ui/icons";
 import logo from "../just_pdf.png";
 import withWidth from "@material-ui/core/withWidth";
@@ -79,11 +83,64 @@ const useStyles = makeStyles((theme) => ({
   buttonexpand: {
     height: "100%",
   },
+  // list: {
+  //   width: 250,
+  // },
+  drawer: {
+    [theme.breakpoints.up("sm")]: {
+      width: 250,
+      flexShrink: 0,
+    },
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+  },
+  // menuButton: {
+  //   marginRight: theme.spacing(2),
+  //   [theme.breakpoints.up("sm")]: {
+  //     display: "none",
+  //   },
+  // },
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: 250,
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+  },
+  closeMenuButton: {
+    marginRight: "auto",
+    marginLeft: 0,
+  },
 }));
 
 const NavBar = (props) => {
   const classes = useStyles();
-  const { width } = props;
+
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = () => setOpen(!open);
+
+  const drawer = (
+    <div>
+      <List>
+        <ListItem button>
+          <ListItemText primary="Home" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Books" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="About" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Contact" />
+        </ListItem>
+      </List>
+    </div>
+  );
+
   return (
     <>
       <AppBar color="primary" position="static">
@@ -103,6 +160,7 @@ const NavBar = (props) => {
                   className={classes.menuButton}
                   color="inherit"
                   aria-label="open drawer"
+                  onClick={toggleDrawer}
                 >
                   <MenuIcon />
                 </IconButton>
@@ -185,10 +243,35 @@ const NavBar = (props) => {
           </Grid>
         </Toolbar>
       </AppBar>
+      <nav className={classes.drawer}>
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+        <Hidden smUp implementation="css">
+          <Drawer
+            variant="temporary"
+            anchor="left"
+            open={open}
+            onClose={toggleDrawer}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            {/* <IconButton
+              onClick={toggleDrawer}
+              className={classes.closeMenuButton}
+            >
+              <CloseIcon />
+            </IconButton> */}
+            {drawer}
+          </Drawer>
+        </Hidden>
+      </nav>
     </>
   );
 };
-NavBar.propTypes = {
-  width: PropTypes.oneOf(["lg", "md", "sm", "xl", "xs"]).isRequired,
-};
+// NavBar.propTypes = {
+//   width: PropTypes.oneOf(["lg", "md", "sm", "xl", "xs"]).isRequired,
+// };
 export default withWidth()(NavBar);

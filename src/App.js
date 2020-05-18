@@ -6,7 +6,7 @@ import Books from "./Books";
 import About from "./About";
 import Contact from "./Contact";
 import "./index";
-import { Container } from "@material-ui/core";
+import { Container, Hidden } from "@material-ui/core";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -19,7 +19,7 @@ const App = () => {
   };
 
   return (
-    <Container>
+    <>
       <Router>
         <NavBar />
         {/* <NavBar updateSearch={changeSearch} handleSearch={findBook} /> */}
@@ -30,7 +30,7 @@ const App = () => {
           <Route path="/contact" exact component={Contact} />
         </Switch>
       </Router>
-    </Container>
+    </>
   );
 };
 
