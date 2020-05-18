@@ -3,6 +3,14 @@ import home from "./assets/img/homepage.png";
 import { Link } from "react-router-dom";
 import { Container, Grid, Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import {
+  createMuiTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@material-ui/core/styles";
+
+let theme = createMuiTheme();
+theme = responsiveFontSizes(theme);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,9 +52,11 @@ const Home = () => {
           justify="center"
         >
           <Grid item xs>
-            <Typography variant="h3" className={classes.text}>
-              Just Pdf for all your academic needs
-            </Typography>
+            <ThemeProvider theme={theme}>
+              <Typography variant="h3" className={classes.text}>
+                Just Pdf for all your academic needs
+              </Typography>
+            </ThemeProvider>
           </Grid>
           <Grid item xs>
             <Typography variant="subtitle1" className={classes.text}>
