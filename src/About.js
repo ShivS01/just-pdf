@@ -25,7 +25,8 @@ const About = () => {
       className={classes.content}
       // wrap="nowrap"
       spacing={2}
-      zeroMinWidth
+      xs={12}
+      // zeroMinWidth
     >
       <Grid item xs={4}>
         <img src={about} alt="about-logo" />
