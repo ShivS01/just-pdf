@@ -9,6 +9,7 @@ import "./index";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
+import Schools from "./components/Schools";
 
 const useStyles = makeStyles((theme) => ({
   heart: {
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="/books" exact component={Books} />
           <Route path="/about" exact component={About} />
           <Route path="/contact" exact component={Contact} />
+          <Route path="/books/:univ" exact component={Schools} />
         </Switch>
         <footer className={classes.footer}>
           <Typography variant="overline">
