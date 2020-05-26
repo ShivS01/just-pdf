@@ -43,7 +43,7 @@ const Universities = ({ name }) => {
         spacing={2}
       >
         <Grid container item xs={6} justify="center" alignContent="center">
-          <ButtonBase component={Link} to="/books/NMIMS">
+          <ButtonBase component={Link} to={"/books/NMIMS"}>
             <img src={nmims} className={classes.img} />
           </ButtonBase>
           {/* <Typography align="center">NMIMS</Typography> */}

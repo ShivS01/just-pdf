@@ -1,6 +1,7 @@
 import React from "react";
 import { Paper, Grid, Typography, ButtonBase } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -41,6 +42,7 @@ const NMIMS = [
     abbv: "SoS",
   },
 ];
+
 const Schools = () => {
   const classes = useStyles();
   return (
@@ -53,8 +55,8 @@ const Schools = () => {
       className={classes.margin}
     >
       {NMIMS.map((school) => (
-        <Grid item xs={2}>
-          <ButtonBase>
+        <Grid item xs={2} key={school.id}>
+          <ButtonBase component={Link} to={`/books/NMIMS/${school.abbv}`}>
             <Paper className={classes.paper}>
               <Typography align="center">{school.name}</Typography>
               <Typography align="center">({school.abbv})</Typography>
