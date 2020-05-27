@@ -55,7 +55,7 @@ const book = [
 const Book = () => {
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} elevation={10}>
       <CardHeader title="Atomic Habits" subheader="James Clear" />
       <CardActionArea className={classes.align}>
         <CardMedia
