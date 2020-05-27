@@ -13,6 +13,7 @@ import Branches from "./components/Branches";
 import Semesters from "./components/Semesters";
 import Sem from "./components/Sem";
 import Universities from "./components/Universities";
+import Book from "./components/Book";
 
 const useStyles = makeStyles((theme) => ({
   heart: {
@@ -44,6 +45,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/books" exact component={Universities} />
+          <Route path="/book" exact component={Book} />
           <Route path="/about" exact component={About} />
           <Route path="/contact" exact component={Contact} />
           <Route path="/books/:univ" exact component={Schools} />

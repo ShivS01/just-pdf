@@ -177,7 +177,7 @@ const NavBar = (props) => {
               <Grid item>
                 <Button
                   size="large"
-                  variant="outlined"
+                  // variant="outlined"
                   component={Link}
                   to="/"
                   startIcon={<Home />}
@@ -188,7 +188,7 @@ const NavBar = (props) => {
               <Grid item>
                 <Button
                   size="large"
-                  variant="outlined"
+                  // variant="outlined"
                   component={Link}
                   to="/books"
                   startIcon={<Book />}
@@ -199,7 +199,7 @@ const NavBar = (props) => {
               <Grid item>
                 <Button
                   size="large"
-                  variant="outlined"
+                  // variant="outlined"
                   component={Link}
                   to="/about"
                   startIcon={<Info />}
@@ -210,7 +210,7 @@ const NavBar = (props) => {
               <Grid item>
                 <Button
                   size="large"
-                  variant="outlined"
+                  // variant="outlined"
                   component={Link}
                   to="/contact"
                   startIcon={<AccountBox />}
