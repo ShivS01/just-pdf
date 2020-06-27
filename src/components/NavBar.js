@@ -80,9 +80,9 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     [theme.breakpoints.down("sm")]: {
-      width: "7ch",
+      width: "8ch",
       "&:focus": {
-        width: "12ch",
+        width: "14ch",
       },
     },
   },

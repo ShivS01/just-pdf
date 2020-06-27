@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = ({ width }) => {
   const classes = useStyles();
+  // This is equivalent to theme.breakpoints.down("sm")
   const isSmallScreen = /xs|sm/.test(width);
   const gridProps = {
     direction: isSmallScreen ? "column" : "row",

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Typography, Grid, ButtonBase } from "@material-ui/core";
+import { Typography, Grid, ButtonBase, withWidth } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import nmims from "../assets/img/nmims_logo.png";
 import mu from "../assets/img/mumbaiuniversity.png";
@@ -12,43 +12,62 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
     borderRadius: theme.spacing(2),
-    height: "100px",
+    [theme.breakpoints.up("xs")]: {
+      height: theme.spacing(12),
+    },
+    [theme.breakpoints.down("xs")]: {
+      height: theme.spacing(11),
+    },
   },
 }));
 
-const Universities = ({ name }) => {
+const Universities = ({ name, width }) => {
   const classes = useStyles();
+  // This is equivalent to theme.breakpoints.down("sm")
+  const isSmallScreen = /xs/.test(width);
+  const gridProps = {
+    direction: isSmallScreen ? "column" : "row",
+  };
+  const gridSize = {
+    xs: isSmallScreen ? 12 : 6,
+  };
+
   return (
     <Grid
       container
       alignItems="center"
       justify="center"
-      // xs={10}
       className={classes.content}
       direction="column"
       spacing={4}
-      xs={12}
     >
       <Grid item xs>
-        <Typography variant="h2" align="center">
+        <Typography variant="h4" align="center">
           Select your University
         </Typography>
       </Grid>
       <Grid
         container
         item
+        {...gridProps}
         justify="center"
         alignItems="center"
-        xs={10}
-        spacing={2}
+        xs={12}
+        spacing={4}
       >
-        <Grid container item xs={6} justify="center" alignContent="center">
+        <Grid container item {...gridSize} justify="center">
           <ButtonBase component={Link} to={"/books/NMIMS"}>
             <img src={nmims} className={classes.img} alt="NMIMS" />
           </ButtonBase>
           {/* <Typography align="center">NMIMS</Typography> */}
         </Grid>
-        <Grid container item xs={6} justify="center" alignContent="center">
+        <Grid container item {...gridSize} justify="center">
+          <ButtonBase>
+            <img src={mu} className={classes.img} alt="MU" />
+          </ButtonBase>
+          {/* <Typography align="center">MU</Typography> */}
+        </Grid>
+        <Grid container item {...gridSize} justify="center">
           <ButtonBase>
             <img src={mu} className={classes.img} alt="MU" />
           </ButtonBase>
@@ -59,4 +78,4 @@ const Universities = ({ name }) => {
   );
 };
 
-export default Universities;
+export default withWidth()(Universities);
