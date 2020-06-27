@@ -148,6 +148,7 @@ const NavBar = (props) => {
           <Grid
             container
             spacing={1}
+            item
             xs={9}
             direction="row"
             justify="flex-start"
@@ -222,6 +223,7 @@ const NavBar = (props) => {
           </Grid>
           <Grid
             container
+            item
             xs={3}
             direction="column"
             justify="flex-end"
