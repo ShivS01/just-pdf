@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./Home";
@@ -14,7 +14,7 @@ import Semesters from "./components/Semesters";
 import Sem from "./components/Sem";
 import Universities from "./components/Universities";
 import Book from "./components/Book";
-import CopyrightIcon from "@material-ui/icons/Copyright";
+// import CopyrightIcon from "@material-ui/icons/Copyright";
 
 const useStyles = makeStyles((theme) => ({
   heart: {

@@ -44,13 +44,13 @@ const Universities = ({ name }) => {
       >
         <Grid container item xs={6} justify="center" alignContent="center">
           <ButtonBase component={Link} to={"/books/NMIMS"}>
-            <img src={nmims} className={classes.img} />
+            <img src={nmims} className={classes.img} alt="NMIMS" />
           </ButtonBase>
           {/* <Typography align="center">NMIMS</Typography> */}
         </Grid>
         <Grid container item xs={6} justify="center" alignContent="center">
           <ButtonBase>
-            <img src={mu} className={classes.img} />
+            <img src={mu} className={classes.img} alt="MU" />
           </ButtonBase>
           {/* <Typography align="center">MU</Typography> */}
         </Grid>

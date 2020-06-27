@@ -15,10 +15,10 @@ import {
   ListItem,
   List,
 } from "@material-ui/core";
-import { fade, makeStyles, useTheme } from "@material-ui/core/styles";
+import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import CloseIcon from "@material-ui/icons/Close";
+// import CloseIcon from "@material-ui/icons/Close";
 import { Home, Book, AccountBox, Info } from "@material-ui/icons";
 import logo from "../just_pdf.png";
 import withWidth from "@material-ui/core/withWidth";

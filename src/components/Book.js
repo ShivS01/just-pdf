@@ -37,20 +37,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //Sample data
-const book = [
-  {
-    id: 1,
-    name: "Atomic Habits",
-    author: "James Clear",
-    pages: "300",
-    edition: "3",
-    img: "xyz.png",
-    size: "30MB",
-    download: "http://download.org",
-    flipkart: "http://flipkart.org",
-    amazon: "http://amazon.org",
-  },
-];
+// const book = [
+//   {
+//     id: 1,
+//     name: "Atomic Habits",
+//     author: "James Clear",
+//     pages: "300",
+//     edition: "3",
+//     img: "xyz.png",
+//     size: "30MB",
+//     download: "http://download.org",
+//     flipkart: "http://flipkart.org",
+//     amazon: "http://amazon.org",
+//   },
+// ];
 
 const Book = () => {
   const classes = useStyles();
@@ -97,10 +97,10 @@ const Book = () => {
           <GetAppIcon />
         </IconButton>
         <IconButton aria-label="amazon">
-          <img src={amazon} className={classes.icon} />
+          <img src={amazon} className={classes.icon} alt="amazon" />
         </IconButton>
         <IconButton aria-label="flipkart">
-          <img src={flipkart} className={classes.icon} />
+          <img src={flipkart} className={classes.icon} alt="flipkart" />
         </IconButton>
       </CardActions>
     </Card>

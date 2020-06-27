@@ -85,11 +85,10 @@ const Home = ({ width }) => {
         <Grid
           item
           {...gridSize}
-          item
           // alignItems="center"
           // direction="column"
         >
-          <img src={home} width="100%" />
+          <img src={home} alt="book_cover" width="100%" />
         </Grid>
       </Grid>
     </>
