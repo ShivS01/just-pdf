@@ -73,10 +73,16 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
-    [theme.breakpoints.up("xs")]: {
+    [theme.breakpoints.up("sm")]: {
       width: "12ch",
       "&:focus": {
         width: "20ch",
+      },
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "7ch",
+      "&:focus": {
+        width: "12ch",
       },
     },
   },
@@ -221,14 +227,7 @@ const NavBar = (props) => {
               </Grid>
             </Hidden>
           </Grid>
-          <Grid
-            container
-            item
-            xs={3}
-            direction="column"
-            justify="flex-end"
-            alignItems="center"
-          >
+          <Grid container item xs={3} justify="flex-end" alignItems="center">
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
