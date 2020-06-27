@@ -67,12 +67,6 @@ const Universities = ({ name, width }) => {
           </ButtonBase>
           {/* <Typography align="center">MU</Typography> */}
         </Grid>
-        <Grid container item {...gridSize} justify="center">
-          <ButtonBase>
-            <img src={mu} className={classes.img} alt="MU" />
-          </ButtonBase>
-          {/* <Typography align="center">MU</Typography> */}
-        </Grid>
       </Grid>
     </Grid>
   );

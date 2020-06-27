@@ -1,14 +1,20 @@
 import React from "react";
-import { Paper, Grid, Typography, ButtonBase } from "@material-ui/core";
+import {
+  Paper,
+  Grid,
+  Typography,
+  ButtonBase,
+  withWidth,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     // margin: theme.spacing(5),
-    padding: theme.spacing(4),
+    padding: theme.spacing(5),
     height: theme.spacing(10),
-    width: theme.spacing(20),
+    width: theme.spacing(10),
   },
   margin: {
     marginTop: theme.spacing(10),
@@ -20,19 +26,25 @@ const STME = [
   { name: "BTech", duration: 4 },
 ];
 
-const Branches = () => {
+const Branches = ({ width }) => {
   const classes = useStyles();
+
+  let size = 0;
+  if (/xs/.test(width)) size = 10;
+  else if (/sm/.test(width)) size = 5;
+  else if (/md/.test(width)) size = 3;
+  else if (/lg|xl/.test(width)) size = 2;
+
   return (
     <Grid
       container
       spacing={4}
-      xs={12}
       justify="center"
       alignItems="center"
       className={classes.margin}
     >
       {STME.map((branch) => (
-        <Grid item xs={2} key={branch.name}>
+        <Grid container item xs={size} key={branch.name} justify="center">
           <ButtonBase
             component={Link}
             to={`/books/NMIMS/${`STME`}/${branch.name}/semesters`}
@@ -48,4 +60,4 @@ const Branches = () => {
   );
 };
 
-export default Branches;
+export default withWidth()(Branches);

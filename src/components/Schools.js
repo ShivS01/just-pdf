@@ -1,5 +1,11 @@
 import React from "react";
-import { Paper, Grid, Typography, ButtonBase } from "@material-ui/core";
+import {
+  Paper,
+  Grid,
+  Typography,
+  ButtonBase,
+  withWidth,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
@@ -7,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     // margin: theme.spacing(5),
     padding: theme.spacing(4),
-    height: theme.spacing(10),
-    width: theme.spacing(20),
+    height: theme.spacing(15),
+    width: theme.spacing(15),
   },
   margin: {
     marginTop: theme.spacing(10),
@@ -43,19 +49,25 @@ const NMIMS = [
   },
 ];
 
-const Schools = () => {
+const Schools = ({ width }) => {
   const classes = useStyles();
+
+  let size = 0;
+  if (/xs/.test(width)) size = 10;
+  else if (/sm/.test(width)) size = 5;
+  else if (/md/.test(width)) size = 3;
+  else if (/lg|xl/.test(width)) size = 2;
+
   return (
     <Grid
       container
       spacing={4}
-      xs={12}
       justify="center"
       alignItems="center"
       className={classes.margin}
     >
       {NMIMS.map((school) => (
-        <Grid item xs={2} key={school.id}>
+        <Grid container item xs={size} key={school.id} justify="center">
           <ButtonBase component={Link} to={`/books/NMIMS/${school.abbv}`}>
             <Paper className={classes.paper}>
               <Typography align="center">{school.name}</Typography>
@@ -68,4 +80,4 @@ const Schools = () => {
   );
 };
 
-export default Schools;
+export default withWidth()(Schools);
