@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import {
   AppBar,
   Toolbar,
@@ -223,7 +223,7 @@ const NavBar = (props) => {
           <Grid
             container
             xs={3}
-            direction="coloumn"
+            direction="column"
             justify="flex-end"
             alignItems="center"
           >
@@ -245,7 +245,10 @@ const NavBar = (props) => {
       </AppBar>
       <nav className={classes.drawer}>
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Hidden smUp implementation="css">
+        <Hidden
+          smUp
+          // implementation="css"
+        >
           <Drawer
             variant="temporary"
             anchor="left"
@@ -272,7 +275,7 @@ const NavBar = (props) => {
     </>
   );
 };
-// NavBar.propTypes = {
-//   width: PropTypes.oneOf(["lg", "md", "sm", "xl", "xs"]).isRequired,
-// };
+NavBar.propTypes = {
+  width: PropTypes.oneOf(["lg", "md", "sm", "xl", "xs"]).isRequired,
+};
 export default withWidth()(NavBar);

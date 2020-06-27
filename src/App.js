@@ -14,6 +14,7 @@ import Semesters from "./components/Semesters";
 import Sem from "./components/Sem";
 import Universities from "./components/Universities";
 import Book from "./components/Book";
+import CopyrightIcon from "@material-ui/icons/Copyright";
 
 const useStyles = makeStyles((theme) => ({
   heart: {
@@ -55,7 +56,6 @@ const App = () => {
             exact
             component={Semesters}
           />
-
           <Route
             path="/books/:univ/:school/:branch/semesters/:sem"
             exact
@@ -67,6 +67,9 @@ const App = () => {
             Website made with <FavoriteIcon className={classes.heart} /> for
             learners
           </Typography>
+          {/* <Typography variant="subtitle">
+            <CopyrightIcon /> 2020 JustPDF
+          </Typography> */}
         </footer>
       </Router>
     </>

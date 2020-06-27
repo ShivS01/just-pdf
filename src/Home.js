@@ -1,13 +1,14 @@
 import React from "react";
 import home from "./assets/img/homepage.png";
 import { Link } from "react-router-dom";
-import { Container, Grid, Typography, Button } from "@material-ui/core";
+import { Grid, Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   createMuiTheme,
   responsiveFontSizes,
   ThemeProvider,
 } from "@material-ui/core/styles";
+import withWidth from "@material-ui/core/withWidth";
 
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
@@ -30,23 +31,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Home = () => {
+const Home = ({ width }) => {
   const classes = useStyles();
-
+  const isSmallScreen = /xs|sm/.test(width);
+  const gridProps = {
+    direction: isSmallScreen ? "column" : "row",
+  };
+  const gridSize = {
+    xs: isSmallScreen ? 10 : 5,
+  };
   return (
     <>
       <Grid
         container
-        direction="row"
+        {...gridProps}
+        // direction="row"
         justify="center"
         alignItems="center"
         className={classes.margin}
-        xs={12}
+        // xs={12}
       >
         <Grid
           container
           item
-          xs={5}
+          {...gridSize}
           // spacing={1}
           direction="column"
           justify="center"
@@ -74,7 +82,7 @@ const Home = () => {
             </Button>
           </Grid>
         </Grid>
-        <Grid container item xs={5} item alignItems="center" direction="column">
+        <Grid item {...gridSize} item alignItems="center" direction="column">
           <img src={home} width="100%" />
         </Grid>
       </Grid>
@@ -82,4 +90,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default withWidth()(Home);
