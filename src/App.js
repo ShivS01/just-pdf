@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     display: "flex",
     justifyContent: "center",
-    // margin: theme.spacing(2),
+    marginTop: theme.spacing(2),
     width: "100%",
     height: "2.5rem",
     position: "absolute",

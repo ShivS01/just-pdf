@@ -61,6 +61,8 @@ const Schools = ({ width }) => {
   return (
     <Grid
       container
+      item
+      xs={12}
       spacing={4}
       justify="center"
       alignItems="center"
