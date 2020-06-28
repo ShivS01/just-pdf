@@ -109,6 +109,8 @@ const useStyles = makeStyles((theme) => ({
   // },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
+    backgroundColor: "rgb(24, 26, 27)",
+    color: "rgba(232, 230, 227, 0.87)",
     width: 250,
   },
   content: {
