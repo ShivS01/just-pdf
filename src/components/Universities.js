@@ -35,11 +35,13 @@ const Universities = ({ name, width }) => {
   return (
     <Grid
       container
+      item
       alignItems="center"
       justify="center"
       className={classes.content}
       direction="column"
       spacing={4}
+      xs={12}
     >
       <Grid item xs>
         <Typography variant="h4" align="center">

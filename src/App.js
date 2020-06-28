@@ -23,7 +23,18 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     display: "flex",
     justifyContent: "center",
-    margin: theme.spacing(2),
+    // margin: theme.spacing(2),
+    width: "100%",
+    height: "2.5rem",
+    position: "absolute",
+    bottom: 0,
+  },
+  container: {
+    position: "relative",
+    minHeight: "100vh",
+  },
+  content: {
+    paddingBottom: "2.5rem",
   },
 }));
 
@@ -39,40 +50,42 @@ const App = () => {
   // };
 
   return (
-    <>
-      <Router>
-        <NavBar />
-        {/* <NavBar updateSearch={changeSearch} handleSearch={findBook} /> */}
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/books" exact component={Universities} />
-          <Route path="/book" exact component={Book} />
-          <Route path="/about" exact component={About} />
-          <Route path="/contact" exact component={Contact} />
-          <Route path="/books/:univ" exact component={Schools} />
-          <Route path="/books/:univ/:school" exact component={Branches} />
-          <Route
-            path="/books/:univ/:school/:branch/semesters"
-            exact
-            component={Semesters}
-          />
-          <Route
-            path="/books/:univ/:school/:branch/semesters/:sem"
-            exact
-            component={Sem}
-          />
-        </Switch>
-        <footer className={classes.footer}>
-          <Typography variant="overline">
-            Website made with <FavoriteIcon className={classes.heart} /> for
-            learners
-          </Typography>
-          {/* <Typography variant="subtitle">
+    <div className={classes.container}>
+      <div className={classes.content}>
+        <Router>
+          <NavBar />
+          {/* <NavBar updateSearch={changeSearch} handleSearch={findBook} /> */}
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/books" exact component={Universities} />
+            <Route path="/book" exact component={Book} />
+            <Route path="/about" exact component={About} />
+            <Route path="/contact" exact component={Contact} />
+            <Route path="/books/:univ" exact component={Schools} />
+            <Route path="/books/:univ/:school" exact component={Branches} />
+            <Route
+              path="/books/:univ/:school/:branch/semesters"
+              exact
+              component={Semesters}
+            />
+            <Route
+              path="/books/:univ/:school/:branch/semesters/:sem"
+              exact
+              component={Sem}
+            />
+          </Switch>
+        </Router>
+      </div>
+      <footer className={classes.footer}>
+        <Typography variant="overline">
+          Website made with <FavoriteIcon className={classes.heart} /> for
+          learners
+        </Typography>
+        {/* <Typography variant="subtitle">
             <CopyrightIcon /> 2020 JustPDF
           </Typography> */}
-        </footer>
-      </Router>
-    </>
+      </footer>
+    </div>
   );
 };
 
