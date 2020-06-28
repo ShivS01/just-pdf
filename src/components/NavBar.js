@@ -145,6 +145,9 @@ const NavBar = (props) => {
         <ListItem button component={Link} to="/contact">
           <ListItemText primary="Contact" />
         </ListItem>
+        <ListItem button component={Link} to="/book">
+          <ListItemText primary="Sample book" />
+        </ListItem>
       </List>
     </div>
   );
