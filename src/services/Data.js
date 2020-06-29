@@ -1,5 +1,5 @@
 import Axios from "axios";
-const baseUrl = "/api/data";
+const baseUrl = "https://just-pdf.herokuapp.com/api/data";
 
 const getAll = () => Axios.get(baseUrl).then((response) => response.data);
 
