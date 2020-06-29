@@ -1,7 +1,1 @@
-[[redirects]]
-  from = "/books"
-  to = "https://just-pdf.herokuapp.com"
-  status = 200
-  force = true # COMMENT: ensure that we always redirect
-  headers = {X-From = "Netlify"}
-  signed = "API_SIGNATURE_TOKEN"
+/api/*  https://just-pdf.herokuapp.com/api/:splat  200
