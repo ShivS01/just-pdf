@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Typography, Grid, ButtonBase, withWidth } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import nmims from "../assets/img/nmims_logo.png";
-import mu from "../assets/img/mumbaiuniversity.png";
+import service from "../services/Data";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -22,6 +21,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Universities = ({ name, width }) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    console.log("useEffect");
+    service.getAll().then((fetchedData) => {
+      setData(fetchedData);
+      // console.log(fetchedData);
+    });
+  }, []);
+
+  if (data !== undefined || data !== null) console.log(data);
+
   const classes = useStyles();
   // This is equivalent to theme.breakpoints.down("sm")
   const isSmallScreen = /xs/.test(width);
@@ -48,6 +59,7 @@ const Universities = ({ name, width }) => {
           Select your University
         </Typography>
       </Grid>
+      {/* <Typography>{data.map((dat) => dat.university)}</Typography> */}
       <Grid
         container
         item
@@ -57,18 +69,29 @@ const Universities = ({ name, width }) => {
         xs={12}
         spacing={4}
       >
-        <Grid container item {...gridSize} justify="center">
+        {data.map((dat) => (
+          <Grid key={dat.id} container item {...gridSize} justify="center">
+            <ButtonBase component={Link} to={`/books/${dat.university}`}>
+              <img
+                src={dat.logo}
+                className={classes.img}
+                alt={dat.university}
+              />
+            </ButtonBase>
+          </Grid>
+        ))}
+        {/* <Grid container item {...gridSize} justify="center">
           <ButtonBase component={Link} to={"/books/NMIMS"}>
             <img src={nmims} className={classes.img} alt="NMIMS" />
           </ButtonBase>
-          {/* <Typography align="center">NMIMS</Typography> */}
+           <Typography align="center">NMIMS</Typography>
         </Grid>
         <Grid container item {...gridSize} justify="center">
           <ButtonBase>
             <img src={mu} className={classes.img} alt="MU" />
           </ButtonBase>
-          {/* <Typography align="center">MU</Typography> */}
-        </Grid>
+           <Typography align="center">MU</Typography> 
+        </Grid>  */}
       </Grid>
     </Grid>
   );
