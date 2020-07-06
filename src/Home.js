@@ -1,5 +1,5 @@
 import React from "react";
-import home from "./assets/img/homepage.png";
+import home from "./assets/img/homepage.webp";
 import { Link } from "react-router-dom";
 import { Grid, Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
